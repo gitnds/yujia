@@ -21,6 +21,7 @@ public class AddInfoActivity extends BaseActivity {
         initView();
         initData();
         initEvent();
+        //asdsadasddasd
 
     }
     public void initView(){
