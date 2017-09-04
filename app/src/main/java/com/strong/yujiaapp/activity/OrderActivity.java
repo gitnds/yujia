@@ -16,7 +16,7 @@ import com.strong.yujiaapp.base.BaseActivity;
 
 public class OrderActivity extends BaseActivity {
 
-    private LinearLayout ll_return;
+    private LinearLayout ll_return, ll_order, ll_calculation;
     private TextView tv_title, tv_hint_add_s, tv_hint_add_r;
 
     @Override
@@ -33,6 +33,8 @@ public class OrderActivity extends BaseActivity {
     public void initView() {
 
         ll_return = (LinearLayout) findViewById(R.id.ll_return);
+        ll_order = (LinearLayout) findViewById(R.id.ll_order);
+        ll_calculation = (LinearLayout) findViewById(R.id.ll_calculation);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_hint_add_s = (TextView) findViewById(R.id.tv_hint_add_s);
         tv_hint_add_r = (TextView) findViewById(R.id.tv_hint_add_r);
@@ -51,7 +53,12 @@ public class OrderActivity extends BaseActivity {
         tv_hint_add_s.setOnClickListener(add_s_ClickListener);
         //添加收货人
         tv_hint_add_r.setOnClickListener(add_r_ClickListener);
+        //下单
+        ll_order.setOnClickListener(orderClickListener);
+        //计算时效运费
+        ll_calculation.setOnClickListener(calculationClickListener);
     }
+
 
     View.OnClickListener add_s_ClickListener = new View.OnClickListener() {
         @Override
@@ -70,6 +77,20 @@ public class OrderActivity extends BaseActivity {
             intent.putExtra("type", "r");
             intent.setClass(OrderActivity.this, HumanInfoActivity.class);
             startActivityForResult(intent, 1);
+        }
+    };
+
+    View.OnClickListener orderClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(OrderActivity.this, "下单！！！", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    View.OnClickListener calculationClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(OrderActivity.this, "计算！！！", Toast.LENGTH_SHORT).show();
         }
     };
 
