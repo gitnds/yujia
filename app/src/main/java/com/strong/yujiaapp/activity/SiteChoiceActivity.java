@@ -1,5 +1,6 @@
 package com.strong.yujiaapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -40,6 +41,7 @@ public class SiteChoiceActivity extends BaseActivity {
     private CityAdapter cityAdapter;
     private CountAdapter countAdapter;
     CityBean bean;
+    int clickShengPosition;
     int clickCityPosition;
 
     @Override
@@ -133,25 +135,52 @@ public class SiteChoiceActivity extends BaseActivity {
             @Override
             public void onItemClickListener(View view, int pos, String name) {
                 Toast.makeText(SiteChoiceActivity.this, "click" + pos, Toast.LENGTH_SHORT).show();
-                    cityAdapter = new CityAdapter(SiteChoiceActivity.this, bean.getData().get(pos).getCity());
+                cityAdapter = new CityAdapter(SiteChoiceActivity.this, bean.getData().get(pos).getCity());
                 cityAdapter.setOnItemClieckLinster(new OnItemClieckLinster() {
                     @Override
                     public void onItemClickListener(View view, int pos, String name) {
                         Toast.makeText(SiteChoiceActivity.this, "click" + pos, Toast.LENGTH_SHORT).show();
-                        countAdapter = new CountAdapter(SiteChoiceActivity.this, bean.getData().get(clickCityPosition).getCity().get(pos).getCounty());
+                        countAdapter = new CountAdapter(SiteChoiceActivity.this, bean.getData().get(clickShengPosition).getCity().get(pos).getCounty());
                         choice_recycler.setAdapter(countAdapter);//设置适配器
+                        clickCityPosition = pos;
                         tv_site.setText("选择区县");
-                    }
+                        tv_hot.setVisibility(View.VISIBLE);
+                        tv_hot.setText(bean.getData().get(clickShengPosition).getName());
+                        tv_city.setVisibility(View.VISIBLE);
+                        tv_city.setText(bean.getData().get(clickShengPosition).getCity().get(pos).getName());
+                        choice_hot_recycler.setVisibility(View.GONE);
+                        countAdapter.setOnItemClieckLinster(new OnItemClieckLinster() {
+                            @Override
+                            public void onItemClickListener(View view, int pos, String name) {
+                                Intent intent = new Intent(SiteChoiceActivity.this,SiteActivity.class);
+                              //  Bundle b=new Bundle();
+                              //  b.putStringArray("name",  new String[]{bean.getData().get(clickShengPosition).getName(),bean.getData().get(clickShengPosition).getCity().get(clickCityPosition).getName(),bean.getData().get(clickShengPosition).getCity().get(clickCityPosition).getCounty().get(pos)});
+                                intent.putExtra("name",bean.getData().get(clickShengPosition).getName()+"@"+bean.getData().get(clickShengPosition).getCity().get(clickCityPosition).getName()+"@"+bean.getData().get(clickShengPosition).getCity().get(clickCityPosition).getCounty().get(pos));
+                                setResult(10, intent);
+                                finish();
+                            }
+
+                            @Override
+                            public void onItemLongClickListener(View view, int pos) {
+                                Toast.makeText(SiteChoiceActivity.this, "long click" + pos, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                }
 
                     @Override
                     public void onItemLongClickListener(View view, int pos) {
                         Toast.makeText(SiteChoiceActivity.this, "long click" + pos, Toast.LENGTH_SHORT).show();
                     }
                 });
-                    clickCityPosition  = pos;
-                    choice_recycler.setAdapter(cityAdapter);//设置适配器
-                    tv_site.setText("选择城市");
+                clickShengPosition = pos;
+                choice_recycler.setAdapter(cityAdapter);//设置适配器
+                tv_site.setText("选择城市");
+                tv_hot.setVisibility(View.GONE);
+                tv_city.setVisibility(View.VISIBLE);
+                tv_city.setText(bean.getData().get(pos).getName());
+                choice_hot_recycler.setVisibility(View.GONE);
             }
+
 
             @Override
             public void onItemLongClickListener(View view, int pos) {
