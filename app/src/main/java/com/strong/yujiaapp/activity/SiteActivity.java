@@ -24,6 +24,8 @@ public class SiteActivity extends BaseActivity {
     private RecyclerView rc_history;
     private EditText et_choice_city;
     private List<String> hData;
+    String[] array;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class SiteActivity extends BaseActivity {
         initEvent();
     }
 
-    public void initView(){
+    public void initView() {
 
         ll_return = (LinearLayout) findViewById(R.id.ll_return);
         rc_history = (RecyclerView) findViewById(R.id.rc_history);
@@ -43,8 +45,10 @@ public class SiteActivity extends BaseActivity {
         et_choice_city = (EditText) findViewById(R.id.et_choice_city);
 
 
+
     }
-    public void initData(){
+
+    public void initData() {
 
         hData = new ArrayList<String>();
         for (int i = 0; i < 12; i++) {
@@ -52,7 +56,8 @@ public class SiteActivity extends BaseActivity {
 
         }
     }
-    public void initEvent(){
+
+    public void initEvent() {
 
         ll_return.setOnClickListener(returnClickListener);
         et_choice_city.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +65,23 @@ public class SiteActivity extends BaseActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(SiteActivity.this, SiteChoiceActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
+    }
+
+    //activity回调
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == 10) {
+            String[] array = data.getStringExtra("name").split("@");
+            if (array != null) {
+
+                et_choice_city.setText(array[0] + "-" + array[1] + "-" + array[2]);
+            }
+        }
     }
 
 }
