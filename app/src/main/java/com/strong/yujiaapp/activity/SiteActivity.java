@@ -2,6 +2,7 @@ package com.strong.yujiaapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import com.strong.yujiaapp.R;
 import com.strong.yujiaapp.base.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/8/22.
  */
@@ -17,27 +21,36 @@ import com.strong.yujiaapp.base.BaseActivity;
 public class SiteActivity extends BaseActivity {
     private LinearLayout ll_return;
     private TextView tv_title;
+    private RecyclerView rc_history;
     private EditText et_choice_city;
+    private List<String> hData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site);
         getSupportActionBar().hide();
-        initView();
         initData();
+        initView();
         initEvent();
     }
 
     public void initView(){
 
         ll_return = (LinearLayout) findViewById(R.id.ll_return);
+        rc_history = (RecyclerView) findViewById(R.id.rc_history);
         tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_title.setText("网点查询");
         et_choice_city = (EditText) findViewById(R.id.et_choice_city);
+
 
     }
     public void initData(){
 
-        tv_title.setText("网点查询");
+        hData = new ArrayList<String>();
+        for (int i = 0; i < 12; i++) {
+            hData.add("历史" + i);
+
+        }
     }
     public void initEvent(){
 
