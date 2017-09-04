@@ -10,9 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.strong.yujiaapp.R;
 import com.strong.yujiaapp.base.BaseActivity;
+import com.strong.yujiaapp.beanmodel.CityBean;
+import com.strong.yujiaapp.controls.CityAdapter;
+import com.strong.yujiaapp.controls.CountAdapter;
+import com.strong.yujiaapp.controls.MyHotAdapter;
 import com.strong.yujiaapp.controls.MyRecyclerAdapter;
+import com.strong.yujiaapp.utils.CityData;
+import com.strong.yujiaapp.utils.OnItemClieckLinster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +31,16 @@ import java.util.Map;
 
 public class SiteChoiceActivity extends BaseActivity {
     private LinearLayout ll_return;
-    private TextView tv_title,tv_hot,tv_city,tv_site;
-    private RecyclerView choice_recycler,choice_hot_recycler;
-    private List<String> hot_mData,mData;
+    private TextView tv_title, tv_hot, tv_city, tv_site;
+    private RecyclerView choice_recycler, choice_hot_recycler;
+    private List<String> hot_mData, mData;
     private List<Map<String, String>> hot_mData2;
-    private MyRecyclerAdapter hotmyrecycleradapter,mmyrecycleradapter;
+    private MyRecyclerAdapter mmyrecycleradapter;
+    private MyHotAdapter hotmyrecycleradapter;
+    private CityAdapter cityAdapter;
+    private CountAdapter countAdapter;
+    CityBean bean;
+    int clickCityPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +55,7 @@ public class SiteChoiceActivity extends BaseActivity {
 
     }
 
-    public void initView(){
+    public void initView() {
 
         ll_return = (LinearLayout) findViewById(R.id.ll_return);
         tv_title = (TextView) findViewById(R.id.tv_title);
@@ -54,8 +66,8 @@ public class SiteChoiceActivity extends BaseActivity {
         choice_hot_recycler = (RecyclerView) findViewById(R.id.choice_hot_recycler);
         choice_recycler = (RecyclerView) findViewById(R.id.choice_recycler);
 
-        hotmyrecycleradapter = new MyRecyclerAdapter(this, hot_mData);
-        mmyrecycleradapter = new MyRecyclerAdapter(this, mData);
+        hotmyrecycleradapter = new MyHotAdapter(this, hot_mData);
+        mmyrecycleradapter = new MyRecyclerAdapter(this, bean.getData());
 
         choice_hot_recycler.setAdapter(hotmyrecycleradapter);//设置适配器
         choice_recycler.setAdapter(mmyrecycleradapter);//设置适配器
@@ -76,38 +88,27 @@ public class SiteChoiceActivity extends BaseActivity {
 
 
     }
-    public void initData(){
+
+    public void initData() {
 
         hot_mData = new ArrayList<String>();
         for (int i = 0; i < 12; i++) {
             hot_mData.add("热门" + i);
 
         }
-
-     /*   hot_mData2 = new ArrayList<Map<String, String>>();
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("青岛", "山东");
-        map.put("青岛", "山东");
-        map.put("青岛", "山东");
-        map.put("青岛", "山东");
-        map.put("青岛", "山东");
-        hot_mData2.add(map);*/
-
-
-
-        mData = new ArrayList<String>();
-        for (int i = 0; i < 35; i++) {
-            mData.add("name" + i);
-
-        }
+        Gson gson = new Gson();
+        CityData cityData = new CityData();
+        String json = cityData.getJson(SiteChoiceActivity.this);
+        bean = gson.fromJson(json, CityBean.class);
 
 
     }
-    public void initEvent(){
+
+    public void initEvent() {
 
         ll_return.setOnClickListener(returnClickListener);
 
-        hotmyrecycleradapter.setOnItemClieckLinster(new MyRecyclerAdapter.OnItemClieckLinster() {
+        hotmyrecycleradapter.setOnItemClieckLinster(new MyHotAdapter.OnItemClieckLinster() {
             @Override
             public void onItemClickListener(View view, int pos) {
 
@@ -119,29 +120,47 @@ public class SiteChoiceActivity extends BaseActivity {
 
                 choice_hot_recycler.setVisibility(View.GONE);
 
-                Toast.makeText(SiteChoiceActivity.this, "热门 click" + pos , Toast.LENGTH_SHORT).show();
+                Toast.makeText(SiteChoiceActivity.this, "热门 click" + pos, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClickListener(View view, int pos) {
-                Toast.makeText(SiteChoiceActivity.this, "热门 long click" + pos , Toast.LENGTH_SHORT).show();
+                Toast.makeText(SiteChoiceActivity.this, "热门 long click" + pos, Toast.LENGTH_SHORT).show();
             }
         });
 
-        mmyrecycleradapter.setOnItemClieckLinster(new MyRecyclerAdapter.OnItemClieckLinster() {
+        mmyrecycleradapter.setOnItemClieckLinster(new OnItemClieckLinster() {
             @Override
-            public void onItemClickListener(View view, int pos) {
-                Toast.makeText(SiteChoiceActivity.this, "click" + pos , Toast.LENGTH_SHORT).show();
+            public void onItemClickListener(View view, int pos, String name) {
+                Toast.makeText(SiteChoiceActivity.this, "click" + pos, Toast.LENGTH_SHORT).show();
+                    cityAdapter = new CityAdapter(SiteChoiceActivity.this, bean.getData().get(pos).getCity());
+                cityAdapter.setOnItemClieckLinster(new OnItemClieckLinster() {
+                    @Override
+                    public void onItemClickListener(View view, int pos, String name) {
+                        Toast.makeText(SiteChoiceActivity.this, "click" + pos, Toast.LENGTH_SHORT).show();
+                        countAdapter = new CountAdapter(SiteChoiceActivity.this, bean.getData().get(clickCityPosition).getCity().get(pos).getCounty());
+                        choice_recycler.setAdapter(countAdapter);//设置适配器
+                        tv_site.setText("选择区县");
+                    }
+
+                    @Override
+                    public void onItemLongClickListener(View view, int pos) {
+                        Toast.makeText(SiteChoiceActivity.this, "long click" + pos, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                    clickCityPosition  = pos;
+                    choice_recycler.setAdapter(cityAdapter);//设置适配器
+                    tv_site.setText("选择城市");
             }
 
             @Override
             public void onItemLongClickListener(View view, int pos) {
-                Toast.makeText(SiteChoiceActivity.this, "long click" + pos , Toast.LENGTH_SHORT).show();
+                Toast.makeText(SiteChoiceActivity.this, "long click" + pos, Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
-
 
 
 }
