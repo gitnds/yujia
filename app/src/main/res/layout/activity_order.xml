@@ -248,6 +248,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/ll_calculation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorGray"
@@ -267,9 +268,9 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@drawable/bg_layout"
         android:gravity="center"
         android:orientation="horizontal">
