@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.strong.yujiaapp.R;
-import com.strong.yujiaapp.beanmodel.CityBean;
-import com.strong.yujiaapp.utils.OnItemClieckLinster;
 
 import java.util.List;
 
@@ -17,18 +15,24 @@ import java.util.List;
  * Created by Administrator on 2017/8/29.
  */
 
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
+public class MyHotAdapter extends RecyclerView.Adapter<MyViewHolder>{
     private LayoutInflater inflater;
     private Context mContext;
-    private List<CityBean.Data> mDatas;
+    private List<String> mDatas;
 
     //创建构造参数
-    public MyRecyclerAdapter(Context context , List<CityBean.Data> datas){
+    public MyHotAdapter(Context context , List<String> datas){
         this.mContext = context;
         this.mDatas = datas;
         inflater = LayoutInflater.from(context);
     }
 
+    public interface OnItemClieckLinster{
+
+
+        void onItemClickListener(View view , int pos);
+        void onItemLongClickListener(View view , int pos);
+    }
 
     private OnItemClieckLinster onItemClieckLinster;
     public void setOnItemClieckLinster(OnItemClieckLinster listener){
@@ -50,7 +54,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         //为textview 赋值
-        holder.tv.setText(mDatas.get(position).getName());
+        holder.tv.setText(mDatas.get(position));
 
         if(onItemClieckLinster != null){
 
@@ -58,7 +62,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemClieckLinster.onItemClickListener(holder.itemView , position,"城市");
+                    onItemClieckLinster.onItemClickListener(holder.itemView , position);
                 }
             });
 
@@ -86,6 +90,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
     //新增item
     public void addData(int pos){
+        mDatas.add("新增");
         notifyItemInserted(pos);
     }
 
@@ -95,12 +100,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
         notifyItemRemoved(pos);
     }
 }
-class MyViewHolder extends RecyclerView.ViewHolder{
+class MyHotHolder extends RecyclerView.ViewHolder{
 
     TextView tv;
 
 
-    public MyViewHolder(View itemView) {
+    public MyHotHolder(View itemView) {
         super(itemView);
 
         tv = (TextView) itemView.findViewById(R.id.recycle_tv);

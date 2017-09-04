@@ -17,13 +17,13 @@ import java.util.List;
  * Created by Administrator on 2017/8/29.
  */
 
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
+public class CityAdapter extends RecyclerView.Adapter<MyViewHolder>{
     private LayoutInflater inflater;
     private Context mContext;
-    private List<CityBean.Data> mDatas;
+    private List<CityBean.Data.City> mDatas;
 
     //创建构造参数
-    public MyRecyclerAdapter(Context context , List<CityBean.Data> datas){
+    public CityAdapter(Context context , List<CityBean.Data.City> datas){
         this.mContext = context;
         this.mDatas = datas;
         inflater = LayoutInflater.from(context);
@@ -58,7 +58,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemClieckLinster.onItemClickListener(holder.itemView , position,"城市");
+                    onItemClieckLinster.onItemClickListener(holder.itemView , position,"区县");
                 }
             });
 
@@ -95,12 +95,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
         notifyItemRemoved(pos);
     }
 }
-class MyViewHolder extends RecyclerView.ViewHolder{
+class CityViewHolder extends RecyclerView.ViewHolder{
 
     TextView tv;
 
 
-    public MyViewHolder(View itemView) {
+    public CityViewHolder(View itemView) {
         super(itemView);
 
         tv = (TextView) itemView.findViewById(R.id.recycle_tv);

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.strong.yujiaapp.R;
-import com.strong.yujiaapp.beanmodel.CityBean;
 import com.strong.yujiaapp.utils.OnItemClieckLinster;
 
 import java.util.List;
@@ -17,20 +16,20 @@ import java.util.List;
  * Created by Administrator on 2017/8/29.
  */
 
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
+public class CountAdapter extends RecyclerView.Adapter<MyViewHolder>{
     private LayoutInflater inflater;
     private Context mContext;
-    private List<CityBean.Data> mDatas;
+    private List<String> mDatas;
 
     //创建构造参数
-    public MyRecyclerAdapter(Context context , List<CityBean.Data> datas){
+    public CountAdapter(Context context , List<String> datas){
         this.mContext = context;
         this.mDatas = datas;
         inflater = LayoutInflater.from(context);
     }
 
 
-    private OnItemClieckLinster onItemClieckLinster;
+    public OnItemClieckLinster onItemClieckLinster;
     public void setOnItemClieckLinster(OnItemClieckLinster listener){
 
         this.onItemClieckLinster = listener;
@@ -50,7 +49,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         //为textview 赋值
-        holder.tv.setText(mDatas.get(position).getName());
+        holder.tv.setText(mDatas.get(position));
 
         if(onItemClieckLinster != null){
 
@@ -58,7 +57,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemClieckLinster.onItemClickListener(holder.itemView , position,"城市");
+                    onItemClieckLinster.onItemClickListener(holder.itemView , position,"区县");
                 }
             });
 
@@ -95,12 +94,12 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder>{
         notifyItemRemoved(pos);
     }
 }
-class MyViewHolder extends RecyclerView.ViewHolder{
+class CountViewHolder extends RecyclerView.ViewHolder{
 
     TextView tv;
 
 
-    public MyViewHolder(View itemView) {
+    public CountViewHolder(View itemView) {
         super(itemView);
 
         tv = (TextView) itemView.findViewById(R.id.recycle_tv);
