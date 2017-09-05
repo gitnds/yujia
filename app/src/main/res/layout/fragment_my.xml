@@ -94,6 +94,7 @@
                 android:paddingTop="15dp">
 
                 <TextView
+                    android:onClick="tv_myorder"
                     android:id="@+id/tv_myorder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -114,6 +115,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:onClick="tv_myloc"
                     android:id="@+id/tv_myloc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -137,6 +139,8 @@
                 android:paddingTop="15dp">
 
                 <TextView
+                    android:onClick="tv_myset"
+                    android:id="@+id/tv_myset"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorWhite"
@@ -156,6 +160,8 @@
                 </LinearLayout>
 
                 <TextView
+                    android:onClick="tv_mymessage"
+                    android:id="@+id/tv_mymessage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorWhite"
@@ -175,6 +181,8 @@
                 </LinearLayout>
 
                 <TextView
+                    android:onClick="tv_myopinion"
+                    android:id="@+id/tv_myopinion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorWhite"
@@ -191,9 +199,10 @@
 
 
             <LinearLayout
+                android:onClick="ll_logout"
+                android:id="@+id/ll_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_layout"
                 android:gravity="center"
