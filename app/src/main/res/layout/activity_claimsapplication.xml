@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorALittleGray"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorALittleGray"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:orientation="vertical">
 
     <include layout="@layout/title_bar"/>
-    <LinearLayout style="@style/LinearLayoutStyleHorizontal"
+
+    <LinearLayout
+        style="@style/LinearLayoutStyleHorizontal"
         android:background="@color/colorALittleGray">
 
         <TextView
             style="@style/TextViewStyle"
             android:layout_width="0dp"
-            android:text="@string/lipeishenqing"
             android:layout_weight="6"
+            android:text="@string/lipeishenqing"
             />
 
 
@@ -25,7 +27,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical" >
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -33,113 +35,126 @@
             android:orientation="vertical">
 
 
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_blue"/>
 
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
                     android:layout_width="0dp"
-                    android:text="@string/yundannumber"
-                    android:layout_weight="6"/>
+                    android:layout_weight="6"
+                    android:text="@string/yundannumber"/>
 
                 <EditText
                     android:id="@+id/et_goods_goodsname"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="5"
+                    android:inputType="text"
                     android:maxLength="15">
-                   </EditText>
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/yundanpone"
                     android:layout_width="0dp"
-                    android:layout_weight="6"/>
+                    android:layout_weight="6"
+                    android:text="@string/yundanpone"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="5"
+                    android:inputType="text"
                     android:maxLength="15">
-                   </EditText>
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/lianxipeple"
                     android:layout_width="0dp"
-                    android:layout_weight="6"/>
+                    android:layout_weight="6"
+                    android:text="@string/lianxipeple"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="5"
+                    android:inputType="text"
                     android:maxLength="15">
-                   </EditText>
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/lianxipone"
                     android:layout_width="0dp"
-                    android:layout_weight="6"/>
+                    android:layout_weight="6"
+                    android:text="@string/lianxipone"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="5"
+                    android:inputType="text"
                     android:maxLength="15">
-                   </EditText>
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/lipeicity"
                     android:layout_width="0dp"
-                    android:layout_weight="6"/>
+                    android:layout_weight="6"
+                    android:text="@string/lipeicity"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="5"
+                    android:inputType="text"
                     android:maxLength="15">
-                   </EditText>
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/lipeipepleOrCompany"
                     android:layout_width="0dp"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:text="@string/lipeipepleOrCompany"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="3"
-                    android:maxLength="15"
-                    android:hint="请与理赔收款人一致">
-                   </EditText>
+                    android:hint="请与理赔收款人一致"
+                    android:inputType="text"
+                    android:maxLength="15">
+                </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/goodsname"
                     android:layout_width="0dp"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:text="@string/goodsname"/>
+
                 <TextView
                     style="@style/TextViewStyle"
                     android:layout_width="0dp"
@@ -153,14 +168,17 @@
                     android:src="@mipmap/go"
                     />
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/shigutype"
                     android:layout_width="0dp"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:text="@string/shigutype"/>
+
                 <TextView
                     style="@style/TextViewStyle"
                     android:layout_width="0dp"
@@ -174,66 +192,73 @@
                     android:src="@mipmap/go"
                     />
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/yichang_count"
                     android:layout_width="0dp"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:text="@string/yichang_count"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="3"
+                    android:inputType="text"
                     android:maxLength="15"
                     >
                 </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/shenqing_account"
                     android:layout_width="0dp"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2"
+                    android:text="@string/shenqing_account"/>
 
                 <EditText
                     style="@style/EditTextStyle"
-                    android:inputType="text"
                     android:layout_weight="2"
-                    android:maxLength="15"
-                    android:hint="手机理赔暂时只支持1000元以下">
+                    android:hint="手机理赔暂时只支持1000元以下"
+                    android:inputType="text"
+                    android:maxLength="15">
                 </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+
+            <TextView style="@style/style_horizontal_line_blue"/>
+
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
                     style="@style/TextViewStyle"
-                    android:text="@string/lipei_reason"
                     android:layout_width="0dp"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:text="@string/lipei_reason"/>
 
                 <EditText
                     style="@style/EditTextStyle"
                     android:layout_weight="3"
-                    android:maxLength="15"
                     android:inputType="textMultiLine"
-                   >
+                    android:maxLength="15"
+                    >
                 </EditText>
             </LinearLayout>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorWhite"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="下一步"
                 android:textColor="@color/colorBluePeacock"
-                android:padding="5dp"
-                android:background="@color/colorWhite"
-                android:layout_margin="10dp"
                 />
         </LinearLayout>
 

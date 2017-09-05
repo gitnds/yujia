@@ -28,5 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/ksoap2-android-assembly-2.5.4-jar-with-dependencies.jar')
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.google.code.gson:gson:2.2.4'
 }
 

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/YujiaAPP.iml" filepath="$PROJECT_DIR$/YujiaAPP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yujia.iml" filepath="$PROJECT_DIR$/yujia.iml" />
     </modules>
   </component>
 </project>
