@@ -9,6 +9,9 @@
     <color name="colorGray">#BDBDBD</color>
     <color name="colorBlackGray">#666666</color>
     <color name="colorALittleGray">#F0F0F0</color>
+    <color name="transparent">#00000000</color>
+    <color name="deeper_grey">#6a6668</color>
+    <color name="grey">#ffbfbfbf</color>
 
 
     <color name="result_view">#b0000000</color>
