@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
 
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
 
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
@@ -51,7 +51,7 @@
                     android:maxLength="15">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -67,7 +67,7 @@
                     android:maxLength="15">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:maxLength="15">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -99,7 +99,7 @@
                     android:maxLength="15">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -115,7 +115,7 @@
                     android:maxLength="15">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -132,15 +132,18 @@
                     android:hint="请与理赔收款人一致">
                    </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
-            <LinearLayout style="@style/LinearLayoutStyleHorizontal">
+            <TextView style="@style/style_horizontal_line_black" />
+            <LinearLayout style="@style/LinearLayoutStyleHorizontal"
+                android:id="@+id/goods_name_linear">
 
                 <TextView
                     style="@style/TextViewStyle"
                     android:text="@string/goodsname"
                     android:layout_width="0dp"
                     android:layout_weight="5"/>
+
                 <TextView
+                    android:id="@+id/tv_goods_name"
                     style="@style/TextViewStyle"
                     android:layout_width="0dp"
                     android:layout_weight="3"/>
@@ -153,8 +156,9 @@
                     android:src="@mipmap/go"
                     />
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
-            <LinearLayout style="@style/LinearLayoutStyleHorizontal">
+            <TextView style="@style/style_horizontal_line_black" />
+            <LinearLayout style="@style/LinearLayoutStyleHorizontal"
+                android:id="@+id/accident_linear">
 
                 <TextView
                     style="@style/TextViewStyle"
@@ -162,6 +166,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="5"/>
                 <TextView
+                    android:id="@+id/tv_accident"
                     style="@style/TextViewStyle"
                     android:layout_width="0dp"
                     android:layout_weight="3"/>
@@ -174,7 +179,7 @@
                     android:src="@mipmap/go"
                     />
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -191,7 +196,7 @@
                     >
                 </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
@@ -208,7 +213,7 @@
                     android:hint="手机理赔暂时只支持1000元以下">
                 </EditText>
             </LinearLayout>
-            <TextView style="@style/style_horizontal_line_blue" />
+            <TextView style="@style/style_horizontal_line_black" />
             <LinearLayout style="@style/LinearLayoutStyleHorizontal">
 
                 <TextView
