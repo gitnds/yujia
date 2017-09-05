@@ -43,9 +43,9 @@
     </style>
 
     <style name="style_horizontal_line_black">
-        <item name="android:background">#000000</item>
+        <item name="android:background">@color/colorALittleGray</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">1.0px</item>
+        <item name="android:layout_height">0.5px</item>
     </style>
 
     <style name="DialogTheme" parent="@android:style/Theme.Dialog">
@@ -65,5 +65,42 @@
         <!-- 遮罩层 -->
         <item name="android:backgroundDimAmount">0.5</item>
     </style>
+    <style name="LinearLayoutStyleHorizontal">
+        <item name="android:layout_height">@dimen/item_height</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginLeft">@dimen/padding_thiner_width</item>
+        <item name="android:layout_marginRight">@dimen/padding_thiner_width</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorWhite</item>
 
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="style_horizontal_line_blue">
+        <item name="android:background">@color/colorALittleGray</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+    <style name="TextViewStyle">
+        <item name="android:textSize">@dimen/normal_txt_size</item>
+        <item name="android:textColor">@color/colorBlackGray</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/padding_thiner_width</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="EditTextStyle">
+        <item name="android:textSize">@dimen/normal_txt_size</item>
+        <item name="android:textColor">@color/deeper_grey</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_marginLeft">@dimen/padding_thiner_width</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginRight">@dimen/padding_thiner_width</item>
+        <item name="android:singleLine">true</item>
+    </style>
 </resources>
