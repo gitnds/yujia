@@ -50,6 +50,7 @@ public class FeedbackActivity extends BaseActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(FeedbackActivity.this,FeedAddActivity.class);
+                //654
                 startActivity(intent);
             }
         });
