@@ -1,13 +1,21 @@
 package com.strong.yujiaapp.controls;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.strong.yujiaapp.R;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/25.
@@ -69,13 +77,42 @@ public class DialogAg {
             }
         });
 
-
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 builder.cancel();
             }
         });
+    }
+    /**
+     * 理赔货物名称 事故类型
+     *
+     * @param context
+     * @param
+     */
+    public static void getListDialog(Context context, final List<String> list,DisplayMetrics metrics,final  TextView tv) {
+        LinearLayout.LayoutParams params;
+
+        View view = View.inflate(context, R.layout.dialog_list, null);
+        final ListView listView = (ListView) view.findViewById(R.id.goods_listview);
+        listView.setAdapter(new ArrayAdapter<String>(context, R.layout.dialog_list_item, R.id.item_dialog, list));
+
+        final Dialog dialog = new Dialog(context, R.style.DialogTheme);
+        if (list.size() > 9) {
+            params = new LinearLayout.LayoutParams(metrics.widthPixels * 3 / 5, metrics.heightPixels * 3 / 5);
+        } else {
+            params = new LinearLayout.LayoutParams(metrics.widthPixels * 3 / 5, LinearLayout.LayoutParams.WRAP_CONTENT);
+        }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                dialog.cancel();
+                tv.setText(list.get(position));
+
+            }
+        });
+        dialog.setCanceledOnTouchOutside(true);// 设置点击Dialog外部任意区域关闭Dialog
+        dialog.addContentView(view, params);
+        dialog.show();
     }
 
 
